@@ -1452,6 +1452,7 @@ useEffect(() => {
       window.history.pushState({ tela: "admin" }, "");
     } else if (admin) {
       setAdmin(false);
+      window.history.pushState({ tela: "inicio" }, "");
     }
   }
 
