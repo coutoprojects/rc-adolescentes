@@ -1350,6 +1350,11 @@ export default function App() {
   const [tapCount, setTap] = useState(0);
   const [registros, setRegistros] = useState([]);
   const [senhaAdmin, setSenhaAdmin] = useState(false);
+  const adminRef = useRef(admin);
+  const historicoRef = useRef(historico);
+
+    useEffect(() => { adminRef.current = admin; }, [admin]);
+    useEffect(() => { historicoRef.current = historico; }, [historico]);  
 
     useEffect(() => {
   carregarRegistros();
@@ -1439,23 +1444,24 @@ useEffect(() => {
 }, [admin, historico]);
 
 useEffect(() => {
-  // Empurra estado ao entrar
   if (admin || historico) {
     window.history.pushState({ tela: admin ? "admin" : "historico" }, "");
   }
+}, [admin, historico]);
 
+useEffect(() => {
   function handlePopState() {
-    if (historico) {
+    if (historicoRef.current) {
       setHistorico(false);
       window.history.pushState({ tela: "admin" }, "");
-    } else if (admin) {
+    } else if (adminRef.current) {
       setAdmin(false);
     }
   }
 
   window.addEventListener("popstate", handlePopState);
   return () => window.removeEventListener("popstate", handlePopState);
-}, [admin, historico]);
+}, []);
 
 useEffect(() => {
   if (admin || historico) return;
