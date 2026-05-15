@@ -562,7 +562,7 @@ function AdminPanel({ data, onBack, onHistorico, onDelete }) {
       <div style={{
         position: "relative",
         zIndex: 10,
-        padding: "40px clamp(20px,4vw,40px) 80px",
+        padding: "40px clamp(20px,4vw,40px) 40px",
         width: "100%",
         maxWidth: 1100,
         margin: "0 auto"
@@ -999,7 +999,7 @@ function calcularIdade(dataNascimento) {
     <div style={{
     position: "relative",
     zIndex: 10,
-    padding: "40px clamp(20px,4vw,40px) 80px",
+    padding: "40px clamp(20px,4vw,40px) 40px",
     width: "100%",
     maxWidth: 1100,
     margin: "0 auto",
