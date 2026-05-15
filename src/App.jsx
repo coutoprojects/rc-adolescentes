@@ -1429,6 +1429,34 @@ export default function App() {
 }, [admin, historico]);
 
 useEffect(() => {
+  if (!admin && !historico) {
+    sessionStorage.removeItem("adminLogado");
+    sessionStorage.removeItem("historicoAberto");
+  }
+}, [admin, historico]);
+
+// NOVO — botão voltar do celular
+useEffect(() => {
+  if (admin || historico) {
+    window.history.pushState({ tela: admin ? "admin" : "historico" }, "");
+  }
+}, [admin, historico]);
+
+useEffect(() => {
+  function handlePopState() {
+    if (historico) {
+      setHistorico(false);
+      window.history.pushState({ tela: "admin" }, "");
+    } else if (admin) {
+      setAdmin(false);
+    }
+  }
+
+  window.addEventListener("popstate", handlePopState);
+  return () => window.removeEventListener("popstate", handlePopState);
+}, [admin, historico]);
+
+useEffect(() => {
   if (admin || historico) return;
 
   let timer = setTimeout(() => {
