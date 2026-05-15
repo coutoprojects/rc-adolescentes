@@ -253,11 +253,12 @@ function ProgressBar({ step }) {
    CARD — escuro translúcido, fundo visível
    backdrop blur BEM menor que antes
 ───────────────────────────────────────────── */
-function Card({ children, style = {}, onClick }) {
+function Card({ children, style = {}, onClick, className }) {  
   const [hover, setHover] = useState(false);
   
   return (
     <div
+      className={className}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       onClick={onClick}
@@ -623,17 +624,16 @@ function AdminPanel({ data, onBack, onHistorico, onDelete }) {
             onChange={e => setQ(e.target.value)}
             placeholder="Buscar por nome ou telefone..."
             onKeyDown={e => {
-  if (e.key === "Enter") {
-    e.target.blur();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-}}
-onKeyUp={e => {
-  if (e.key === "Enter") {
-    e.target.blur();
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
-}}
+              if (e.key === "Enter") {
+              e.target.blur();
+                setTimeout(() => {
+                const primeiroCard = document.querySelector(".card-resultado");
+                if (primeiroCard) {
+                  primeiroCard.scrollIntoView({ behavior: "smooth" });
+                }
+              }, 100);
+              }
+             }}
 
             style={{
               width: "100%",
@@ -757,6 +757,7 @@ onKeyUp={e => {
               {itens.map((d, i) => (
                 <Card
                   key={i}
+                  className="card-resultado"
                   style={{
                     background: "rgba(113,102,102,0.38)",
                     border: "1px solid rgba(255,255,255,0.45)",
