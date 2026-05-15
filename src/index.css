@@ -1,0 +1,50 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background: #c8c0b2;
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#root {
+  min-height: 100%;
+}
+
+body.no-scroll {
+  overflow: hidden;
+  height: 100dvh;
+}
+
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  color: rgba(255,255,255,0.5);
+}
+
+input[type="date"]:not(:placeholder-shown)::-webkit-datetime-edit-text,
+input[type="date"]:not(:placeholder-shown)::-webkit-datetime-edit-month-field,
+input[type="date"]:not(:placeholder-shown)::-webkit-datetime-edit-day-field,
+input[type="date"]:not(:placeholder-shown)::-webkit-datetime-edit-year-field {
+  color: #fff;
+}
+
+.senhaInput::placeholder {
+  color: rgba(255,255,255,0.4);
+}
+
+body {
+  overscroll-behavior: none;
+}
