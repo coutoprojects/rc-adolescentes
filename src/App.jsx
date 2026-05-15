@@ -1444,6 +1444,11 @@ useEffect(() => {
 }, [admin, historico]);
 
 useEffect(() => {
+  // Sempre empurra um estado "base" ao carregar
+  window.history.pushState({ tela: "inicio" }, "");
+}, []);
+
+useEffect(() => {
   if (admin || historico) {
     window.history.pushState({ tela: admin ? "admin" : "historico" }, "");
   }
