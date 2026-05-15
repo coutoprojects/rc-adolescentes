@@ -622,6 +622,12 @@ function AdminPanel({ data, onBack, onHistorico, onDelete }) {
             value={q}
             onChange={e => setQ(e.target.value)}
             placeholder="Buscar por nome ou telefone..."
+            onKeyDown={e => {
+              if (e.key === "Enter") {
+              e.target.blur();
+              }
+           }}
+
             style={{
               width: "100%",
               boxSizing: "border-box",
