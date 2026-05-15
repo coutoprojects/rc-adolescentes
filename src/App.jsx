@@ -459,23 +459,22 @@ function AdminPanel({ data, onBack, onHistorico, onDelete }) {
 }, []);
 
   const list = data.filter(d => {
+  const telefoneLimpo = d.telefone?.replace(/\D/g, "");
+  const buscaLimpa = q.replace(/\D/g, "");
 
+  const matchBusca = q.trim() === ""
+    ? true
+    : d.nome?.toLowerCase().includes(q.toLowerCase().trim()) ||
+      (buscaLimpa.length > 0 && telefoneLimpo.includes(buscaLimpa));
 
-    const telefoneLimpo = d.telefone?.replace(/\D/g, "");
-    const buscaLimpa = q.replace(/\D/g, "");
+  const matchData = dataFiltro
+    ? d.data === new Date(dataFiltro + "T00:00:00").toLocaleDateString("pt-BR")
+    : true;
 
-    const matchBusca =
-      d.nome?.toLowerCase().includes(q.toLowerCase().trim()) ||
-      telefoneLimpo.includes(buscaLimpa);
+  const matchVisitante = soVisitantes ? d.primeira_vez : true;
 
-    const matchData = dataFiltro
-      ? d.data === new Date(dataFiltro + "T00:00:00").toLocaleDateString("pt-BR")
-      : true;
-
-    const matchVisitante = soVisitantes ? d.primeira_vez : true;
-
-    return matchBusca && matchData && matchVisitante;
-  });
+  return matchBusca && matchData && matchVisitante;
+});
 
   const agrupados = useMemo(() => {
     return list.reduce((acc, item) => {
