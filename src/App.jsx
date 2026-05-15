@@ -1437,13 +1437,6 @@ export default function App() {
 }, [admin, historico]);
 
 useEffect(() => {
-  if (!admin && !historico) {
-    sessionStorage.removeItem("adminLogado");
-    sessionStorage.removeItem("historicoAberto");
-  }
-}, [admin, historico]);
-
-useEffect(() => {
   // Sempre empurra um estado "base" ao carregar
   window.history.pushState({ tela: "inicio" }, "");
 }, []);
