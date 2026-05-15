@@ -556,6 +556,7 @@ function AdminPanel({ data, onBack, onHistorico, onDelete }) {
       minHeight: "100vh",
       position: "relative",
       fontFamily: "'DM Sans',sans-serif",
+      overscrollBehavior: "none"
     }}>
       <AuraBackground />
       <div style={{
@@ -989,6 +990,7 @@ function calcularIdade(dataNascimento) {
   minHeight: "100vh",
   position: "relative",
   fontFamily: "'DM Sans',sans-serif",
+  overscrollBehavior: "none"
 }}>
 
     <AuraBackground />
