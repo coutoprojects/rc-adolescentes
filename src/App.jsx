@@ -1438,21 +1438,18 @@ useEffect(() => {
   }
 }, [admin, historico]);
 
-// NOVO — botão voltar do celular
 useEffect(() => {
+  // Empurra estado ao entrar
   if (admin || historico) {
     window.history.pushState({ tela: admin ? "admin" : "historico" }, "");
   }
-}, [admin, historico]);
 
-useEffect(() => {
   function handlePopState() {
     if (historico) {
       setHistorico(false);
       window.history.pushState({ tela: "admin" }, "");
     } else if (admin) {
       setAdmin(false);
-      window.history.pushState({ tela: "inicio" }, "");
     }
   }
 
