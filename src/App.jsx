@@ -624,16 +624,19 @@ function AdminPanel({ data, onBack, onHistorico, onDelete }) {
             onChange={e => setQ(e.target.value)}
             placeholder="Buscar por nome ou telefone..."
             onKeyDown={e => {
-              if (e.key === "Enter") {
+            if (e.key === "Enter") {
               e.target.blur();
-                setTimeout(() => {
+              setTimeout(() => {
                 const primeiroCard = document.querySelector(".card-resultado");
                 if (primeiroCard) {
-                  primeiroCard.scrollIntoView({ behavior: "smooth" });
+                  window.scrollTo({
+                    top: primeiroCard.getBoundingClientRect().top + window.scrollY - 20,
+                    behavior: "smooth"
+                  });
                 }
-              }, 100);
-              }
-             }}
+              }, 200);
+            }
+          }}
 
             style={{
               width: "100%",
