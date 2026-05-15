@@ -623,11 +623,17 @@ function AdminPanel({ data, onBack, onHistorico, onDelete }) {
             onChange={e => setQ(e.target.value)}
             placeholder="Buscar por nome ou telefone..."
             onKeyDown={e => {
-              if (e.key === "Enter") {
-              e.target.blur();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-              }
-            }}
+  if (e.key === "Enter") {
+    e.target.blur();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}}
+onKeyUp={e => {
+  if (e.key === "Enter") {
+    e.target.blur();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+}}
 
             style={{
               width: "100%",
