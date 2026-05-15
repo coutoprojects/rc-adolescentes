@@ -625,8 +625,9 @@ function AdminPanel({ data, onBack, onHistorico, onDelete }) {
             onKeyDown={e => {
               if (e.key === "Enter") {
               e.target.blur();
+              window.scrollTo({ top: 0, behavior: "smooth" });
               }
-           }}
+            }}
 
             style={{
               width: "100%",
