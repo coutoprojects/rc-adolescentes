@@ -16,6 +16,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   padding-top: env(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-bottom);
+  overscroll-behavior: none;
 }
 
 #root {
@@ -43,8 +44,4 @@ input[type="date"]:not(:placeholder-shown)::-webkit-datetime-edit-year-field {
 
 .senhaInput::placeholder {
   color: rgba(255,255,255,0.4);
-}
-
-body {
-  overscroll-behavior: none;
 }
